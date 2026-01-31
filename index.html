@@ -12,8 +12,15 @@ body{
   height:100vh;
   margin:0;
   background:#fff0f6;
+  overflow:hidden;
 }
-.container{text-align:center;padding:20px;}
+
+.container{
+  text-align:center;
+  padding:20px;
+  position:relative;
+}
+
 h1{font-size:26px;}
 
 button{
@@ -23,11 +30,19 @@ button{
   border:none;
   border-radius:12px;
   cursor:pointer;
-  transition:transform 0.3s ease;
+  transition:transform 0.2s ease, left 0.3s ease, top 0.3s ease;
   -webkit-tap-highlight-color:transparent;
 }
-.now{background:#ff4d6d;color:white;}
-.notyet{background:#e0e0e0;}
+
+.now{
+  background:#ff4d6d;
+  color:white;
+}
+
+.notyet{
+  background:#e0e0e0;
+  position:absolute;
+}
 
 #gif{
   display:none;
@@ -47,7 +62,6 @@ button{
     <button id="noBtn" class="notyet" onclick="no()">Not yet 😏</button>
   </div>
 
-  <!-- GIF -->
   <img
     id="gif"
     src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjR2N3h3NHd5ejhrd29jZXJzcXJsYnpnYjBhOHF2aDAxcGxtbnB2NCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RhTDpm7iF0VdKIhtUj/giphy.gif"
@@ -56,13 +70,21 @@ button{
 </div>
 
 <script>
-let scale = 1;
-
 function no(){
-  document.getElementById("q").innerText = "What about now? 🥺";
-  scale -= 0.08;
-  if(scale < 0.4) scale = 0.4;
-  document.getElementById("noBtn").style.transform = "scale(" + scale + ")";
+  const btn = document.getElementById("noBtn");
+  const q = document.getElementById("q");
+
+  q.innerText = "What about now? 🥺";
+
+  const padding = 20;
+  const maxX = window.innerWidth - btn.offsetWidth - padding;
+  const maxY = window.innerHeight - btn.offsetHeight - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
 }
 
 function yes(){
