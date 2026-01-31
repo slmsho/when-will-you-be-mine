@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖</title>
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+  background:#fff0f6;
+}
+.container{text-align:center;padding:20px;}
+h1{font-size:26px;}
+button{
+  font-size:18px;
+  padding:14px 26px;
+  margin:10px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  transition:transform 0.3s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.now{background:#ff4d6d;color:white;}
+.notyet{background:#e0e0e0;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1 id="q">When will you be mine? 💕</h1>
+  <div id="buttons">
+    <button class="now" onclick="yes()">Now 💘</button>
+    <button id="noBtn" class="notyet" onclick="no()">Not yet 😏</button>
+  </div>
+</div>
+
+<script>
+let scale = 1;
+function no(){
+  document.getElementById("q").innerText = "What about now? 🥺";
+  scale -= 0.08;
+  if(scale < 0.4) scale = 0.4;
+  document.getElementById("noBtn").style.transform = "scale(" + scale + ")";
+}
+function yes(){
+  document.getElementById("q").innerText =
+    "Perfect. Now screenshot this for proof so you can’t back away 📸💍";
+  document.getElementById("buttons").style.display = "none";
+}
+</script>
+
+</body>
+</html>
